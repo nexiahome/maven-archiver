@@ -52,6 +52,12 @@ public class ManifestConfiguration
     private boolean addExtensions;
 
     /**
+     * This gets appended to the classpath.  (Space-separated list of extra
+     * classpath entries; directories must end in '/'.)
+     */
+    private String appendToClasspath = "";
+
+    /**
      * This gets prefixed to all classpath entries.
      */
     private String classpathPrefix = "";
@@ -132,6 +138,14 @@ public class ManifestConfiguration
     }
 
     /**
+     * @return appendToClasspath
+     */
+    public String getAppendToClasspath()
+    {
+        return appendToClasspath;
+    }
+
+    /**
      * @return {@link #addDefaultImplementationEntries}
      */
     public boolean isAddDefaultImplementationEntries()
@@ -177,6 +191,14 @@ public class ManifestConfiguration
     public void setAddBuildEnvironmentEntries( boolean addBuildEnvironmentEntries )
     {
         this.addBuildEnvironmentEntries = addBuildEnvironmentEntries;
+    }
+
+    /**
+     * @param appendToClasspath new value for appendToClasspath
+     */
+    public void setAppendToClasspath( String appendToClasspath )
+    {
+        this.appendToClasspath = appendToClasspath;
     }
 
     /**

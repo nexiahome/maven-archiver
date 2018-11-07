@@ -746,6 +746,7 @@ public class MavenArchiverTest
         config.getManifest().setAddDefaultSpecificationEntries( true );
         config.getManifest().setMainClass( "org.apache.maven.Foo" );
         config.getManifest().setAddClasspath( true );
+        config.getManifest().setAppendToClasspath( "config/" );
         config.getManifest().setUseUniqueVersions( true );
         config.getManifest().setClasspathLayoutType( ManifestConfiguration.CLASSPATH_LAYOUT_TYPE_REPOSITORY );
         archiver.createArchive( session, project, config );
@@ -756,6 +757,7 @@ public class MavenArchiverTest
         assertEquals( "org/apache/dummy/dummy1/1.0.1/dummy1-1.0.jar", classPathEntries[0] );
         assertEquals( "org/apache/dummy/foo/dummy2/1.5/dummy2-1.5.jar", classPathEntries[1] );
         assertEquals( "org/apache/dummy/bar/dummy3/2.0/dummy3-2.0.jar", classPathEntries[2] );
+        assertEquals( "config/", classPathEntries[3] );
 
         String classPath = getJarFileManifest( jarFile ).getMainAttributes().getValue( Attributes.Name.CLASS_PATH );
         assertNotNull( classPath );
@@ -763,6 +765,7 @@ public class MavenArchiverTest
         assertEquals( "org/apache/dummy/dummy1/1.0.1/dummy1-1.0.jar", classPathEntries[0] );
         assertEquals( "org/apache/dummy/foo/dummy2/1.5/dummy2-1.5.jar", classPathEntries[1] );
         assertEquals( "org/apache/dummy/bar/dummy3/2.0/dummy3-2.0.jar", classPathEntries[2] );
+        assertEquals( "config/", classPathEntries[3] );
     }
 
     @Test
