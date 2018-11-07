@@ -351,6 +351,16 @@ public class MavenArchiver
                 }
             }
 
+            String appendToClasspath = config.getAppendToClasspath();
+            if ( appendToClasspath.length() > 0 )
+            {
+                if ( classpath.length() > 0 )
+                {
+                    classpath.append( " " );
+                }
+                classpath.append( appendToClasspath );
+            }
+
             if ( classpath.length() > 0 )
             {
                 // Class-Path is special and should be added to manifest even if
